@@ -1,0 +1,70 @@
+1. Rather than small number of large functions, use large number of small
+functions which do specific sings. Functions in different files can be
+compiled together. There is no NEED for definition to be present before it's
+call. 
+
+2. If a return type is specified but no value is returned, then arbitrary
+value is returned. So taking care of all cases is necessary. 
+
+3. If return type is not specified, by default returns 'int'. So if a 
+double is returned to a double variable, with return type undefined,
+truncation will take place. It is a good habit to specify int if you are
+returning int
+
+4. The returned value is typecasted to the return type before returning
+
+5. External variables can be used to share data between two functions, so that
+excessive arguements are not required. eg. push() and pop() in a stack. It is
+possible to make an external variable accessible to only particular functions.
+How ?
+
+6. External variables can be implicitly defined outside a function in a file.
+Then their scope is in the file, below their declaration (same applies to
+functions). This scope can be extended to other files or functions by adding a 
+declaration of form (extern type name) in the respective file or function.
+Simply writing extern in file and using it does NOT work. Extern variables
+exist as long as functions it's scope are using it.
+
+7. Static variables preserve values just like extern variables, but the are
+not visible to other functions and files. A static variable in one file is not
+visible in another file even if we do 'extern' and stuff. This can also be
+done inside a function, to provide a 'state' to the function.
+
+8. Register 'suggests' to the compiler that this particular variable is
+supposed to be placed in a machine register. The compiler may or may not,
+based on ability and choice. Address of register variable is invalid, even if
+you do not dereference it, irrespective of whether compiler is actually
+placing it in a register or not.
+
+9. Array elements of declared array are by default 0. There is no way to
+specipy repetition of initialiser. Automatic computation. Extra elements after
+specifying size is incorrect. 
+
+10. External and static variables are initialised before the program execution begins.
+(conceptually WTH?). So you can't have an external or static to initialise to
+a function. Auto and register, can be.
+eg. int a = f();
+is equivalent to: int a; a = f();
+
+11. When you want to process something from end to beginning, but end is to be
+accessed through previous objects, then recursion is useful. It is note space
+efficient. It is not particularly time efficient. But it is easy to
+understand.
+
+12. #define token1 expr replaces all ocuurences of text 'conceptually' below
+the #define. Use of parentheses is needed to prevent misunderstood usage.
+Macros provide trans-data-type flexiblity. Conditional preprocessing is
+possible using #if or #ifndef and #define
+eg.
+#if integer_expression
+	#define ...
+	statements
+	...
+#endif
+Now everything in between the if and the endif will be ignored if the given
+integer expression has value 0.
+#if defined(macro) is used to prevent redefinition of macro
+
+#include "filename" is replaced by contents of 'filename".
+#include <official_stuff> -> here the <> indicates that an implementation
+defined rule is used to find the file

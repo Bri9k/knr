@@ -1,0 +1,59 @@
+3.1
+
+An expression with a ; at the end is a statement.
+All blocks are of the form:
+Keyword ()
+	statement
+
+When a single statement does not suffice, we use
+{
+	...
+}
+
+The block within the {} is called as a compound statement and is eqiuvalent to
+a statement.
+
+
+3.2
+
+if executes first statement following it if the condition expression has
+nonzero value
+To avoid confusion, the first if before the else statement is considered as
+it's if
+i.e
+if (c1)
+	if (c2)
+		statement1
+else
+	statement2
+
+Here, else will NOT be executed if c1 == 0, but if c1 != 0 and c2 == 0
+Programmers Mustusebraces in nested if-s
+
+3.3
+
+"cases are just labels" -K&R
+Now you know why there is fall through
+The expression which is 'switched' must be an integer or a character
+
+When using comma operator is used in for loops, evalutation is done from left
+to right. (So one could, in fact put the body of the for loop in the updation 
+statement (statement 1, statement 2, ... , 'actual increment')	
+But "That, (to quote Richard Nixon) would be wrong"
+Why for loops are handy - when you 'continue' in for, updation occurs, wheras
+it does not occur when you are using artificial updation in while loops
+break breaks out of the current for or switch block
+
+Though using goto is not banned, (otherwise the masters of C would never have put it in the language
+Sane people are advised not to use it (except as K&R says, use it in case of a
+	HUGE jump which would require too many status variables
+
+...;
+...;
+if (a)
+{
+	goto <label1>;
+}
+<label1>:
+...
+

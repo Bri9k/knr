@@ -1,0 +1,104 @@
+2.1
+Variable names may contain letters and numbers and start with letters with _
+being considered a letter. It is advised not to use _ as it is used in
+function internals. Do not use keywords;
+
+2.2
+char is 8 bit
+int may be 16 or 32 bit depending on the machine
+unsigned means all bits are used for value, all values being positive (or zero)
+signed means MIN = - MAX - 1; For example, negative char 10000000 will have
+value -2^8, wheras 00000000 will have value zero. There are no negative zeros
+
+limits.h defines ranges of data types, but I am unable to use them
+
+
+2.3
+A short integer constant (in range) is treated as an integer
+Longer constants implicitly are converted to long int
+Adding L or U as a suffix to an integer makes it long or unsigned respectively
+0x(hh) is hex of integer
+A decimal point or a e-something makes things float
+Strings are concatenated at runtime
+#define expressions are evaluated only once
+enum assigns integer values to subsequent names, starting from integer value
+assigned to first, default from 0
+Apparently they are better than #define something about debuggers I do not
+understand
+
+
+2.4
+declaration is <int a>
+initialisation is assigning value to variable for the first time
+external or static variables are by default assigned zero value
+
+
+2.5, 2.6
+Arithmetic operaters have precedence (* = / = %) > (+ = -)
+Arithmetic > Relational
+Relational (> \= >= \= <= \= <) > (== \= !=)
+Relational > Logical
+Logical (&& > ||)
+
+!<nonzero value> returns 0
+Use ctpye instead of ASCII assumptions
+
+
+2.7
+Lower to Upper do not cause problems
+Upper to Lower in int rounds of upper bits
+For float -> double, it is compiler dependent
+Automatic conversions in expressions are towards higher accuracy
+? In absence of prototype, char -> int, float -> double
+
+2.8
+increment decrement work only on int-like variables (not expressions), change their values;
+post and pre increment or decrement modify values after and before evaluation
+respectively
+
+for (i = j = 0; str[i] != '\0'; ++i)
+{
+	if (condition)
+	{
+		str[j++] = str[i];
+	}
+}
+str[j] = '\0'
+is magnificent
+
+
+2.9
+
+>> in unsigned int-like quantities will fill the leftmost bit with 0, but in
+signed quantities, MSB is compiler dependent
+(~0) is more portable than actual calculation based on power of 2
+Bits can be masked off eg. Bits n, n - 1, n - 2, .. n - p + 1 can be masked
+off by doing x & (~((~0) << n) << (p - n + 1))
+Bit-Level hacking is efficient but must be tested rigourously
+
+
+2.10
+An assignment is an expression which returns value of the LHS of the
+assignment
+op= is also an assignment and can be (though actually rarely is) used as an
+expression
+(e1) ? (e2) : (e3) returns e2 if e1 is nonzero and e3 if e1 is zero
+a op= b is evaluated as: a = (a) op (b)
+using x op= y is better where x itself is a long expression (inside of index parentheses for example)
+
+Arithmetic, Shift are fare game before comparison and Logical but Bitwise are
+not
+P	U	M	 A	S	Re		B	L	C		A		C
+Postfix Unary   Multiply Add    Shift   Relational      Bitwise Logical Conditional     Assignment      Comma 
+
+
+Puma's Rebel Cac
+
+This is BODMA
+
+Writing code which is dependent on order of evaluation is a bad programming
+practice in any language (However Kool it may seem)
+? Do not understand the sentence after that
+
+
+
